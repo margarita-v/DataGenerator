@@ -6,5 +6,8 @@ public abstract class BaseGenerator<T> {
 
     public abstract T getNext();
 
-    protected static String NO_SUCH_ELEMENT_EXCEPTION = "All values were generated!";
+    /**
+     * String value for exception's message
+     */
+    static String NO_SUCH_ELEMENT_EXCEPTION = "All values were generated!";
 }
