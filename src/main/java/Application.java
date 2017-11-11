@@ -1,6 +1,8 @@
+import generators.DateGenerator;
 import generators.FileGenerator;
 
 import java.io.File;
+import java.util.Date;
 
 public class Application {
 
@@ -13,5 +15,14 @@ public class Application {
         FileGenerator fileGenerator = new FileGenerator(new File(FILE_NAME));
         while (fileGenerator.hasNext())
             System.out.println(fileGenerator.getNext());
+
+        System.out.println();
+
+        DateGenerator dateGenerator = new DateGenerator(
+                new Date(117, 11, 12),
+                new Date(117, 11, 23),
+                DateGenerator.TypeOfDay.WORKING);
+        while (dateGenerator.hasNext())
+            System.out.println(dateGenerator.getNext().toString());
     }
 }

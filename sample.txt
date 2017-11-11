@@ -1,4 +1,5 @@
-мама мыла раму
+sample text
 
-случайный текст
+sample data
 
+task
