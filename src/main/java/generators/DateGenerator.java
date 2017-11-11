@@ -35,12 +35,13 @@ public class DateGenerator extends BaseGenerator<LocalDate> {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    //region BaseGenerator implementation
+    @Override
     public boolean hasNext() {
         return currentDate.isBefore(maxDate);
     }
 
-    public LocalDate getNext() {
+    @Override
+    public LocalDate getNext() throws NoSuchElementException {
         if (hasNext()) {
 
             // Return current date and increment its value
@@ -59,7 +60,6 @@ public class DateGenerator extends BaseGenerator<LocalDate> {
         }
         throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
     }
-    //endregion
 
     /**
      * Enum for a type of a day

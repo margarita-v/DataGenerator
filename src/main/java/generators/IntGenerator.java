@@ -31,12 +31,13 @@ public class IntGenerator extends BaseGenerator<Integer> {
     }
     //endregion
 
-    //region BaseGenerator implementation
+    @Override
     public boolean hasNext() {
         return currentValue < maxValue;
     }
 
-    public Integer getNext() {
+    @Override
+    public Integer getNext() throws NoSuchElementException {
         if (hasNext()) {
             int result = currentValue;
             currentValue += step;
@@ -44,8 +45,7 @@ public class IntGenerator extends BaseGenerator<Integer> {
         }
         throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
     }
-    //endregion
-
+    
     //region Setters
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;

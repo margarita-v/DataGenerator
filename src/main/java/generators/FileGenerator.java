@@ -17,15 +17,15 @@ public class FileGenerator extends BaseGenerator<String> {
         }
     }
 
-    //region BaseGenerator implementation
+    @Override
     public boolean hasNext() {
         return scanner.hasNext();
     }
 
-    public String getNext() {
+    @Override
+    public String getNext() throws NoSuchElementException {
         if (hasNext())
             return scanner.next();
         throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
     }
-    //endregion
 }

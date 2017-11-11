@@ -5,15 +5,15 @@ import java.util.Random;
 
 public class DoubleGenerator extends BaseGenerator<Double> {
 
-    //region BaseGenerator implementation
+    @Override
     public boolean hasNext() {
         return true;
     }
 
-    public Double getNext() {
+    @Override
+    public Double getNext() throws NoSuchElementException {
         if (hasNext())
             return new Random().nextDouble();
         throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
     }
-    //endregion
 }

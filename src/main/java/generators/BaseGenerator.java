@@ -1,10 +1,12 @@
 package generators;
 
+import java.util.NoSuchElementException;
+
 public abstract class BaseGenerator<T> {
 
     public abstract boolean hasNext();
 
-    public abstract T getNext();
+    public abstract T getNext() throws NoSuchElementException;
 
     /**
      * String value for exception's message
