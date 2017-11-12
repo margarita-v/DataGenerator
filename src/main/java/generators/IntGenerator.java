@@ -3,6 +3,11 @@ package generators;
 public class IntGenerator extends BaseGenerator<Integer> {
 
     /**
+     * Current value which will be returned in getNext() method
+     */
+    private int currentValue;
+
+    /**
      * Max value for generated values
      */
     private int maxValue;
@@ -12,15 +17,15 @@ public class IntGenerator extends BaseGenerator<Integer> {
      */
     private int step = 1;
 
-    /**
-     * Current value which will be returned in getNext() method
-     */
-    private int currentValue;
-
     //region Constructors
     public IntGenerator(int minValue, int maxValue) {
-        this.maxValue = maxValue;
-        this.currentValue = minValue;
+        if (minValue < maxValue) {
+            this.currentValue = minValue;
+            this.maxValue = maxValue;
+        } else {
+            this.currentValue = maxValue;
+            this.maxValue = minValue;
+        }
     }
 
     public IntGenerator(int minValue, int maxValue, int step) {
@@ -43,14 +48,4 @@ public class IntGenerator extends BaseGenerator<Integer> {
         }
         return null;
     }
-
-    //region Setters
-    public void setMaxValue(int maxValue) {
-        this.maxValue = maxValue;
-    }
-
-    public void setStep(int step) {
-        this.step = step;
-    }
-    //endregion
 }
