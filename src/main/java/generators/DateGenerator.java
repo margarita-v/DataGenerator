@@ -2,37 +2,34 @@ package generators;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.NoSuchElementException;
 
 public class DateGenerator extends BaseGenerator<LocalDate> {
 
+    /**
+     * Current date
+     */
     private LocalDate currentDate;
 
+    /**
+     * Max date for generated values
+     */
     private LocalDate maxDate;
 
+    /**
+     * Type of days which should be returned in getNext() method
+     */
     private TypeOfDay typeOfDay;
 
-    public DateGenerator(Date minDate, Date maxDate, TypeOfDay typeOfDay) {
-        if (minDate.before(maxDate)) {
-            this.currentDate = convertToLocalDate(minDate);
-            this.maxDate = convertToLocalDate(maxDate);
+    public DateGenerator(LocalDate minDate, LocalDate maxDate, TypeOfDay typeOfDay) {
+        if (minDate.isBefore(maxDate)) {
+            this.currentDate = minDate;
+            this.maxDate = maxDate;
         }
         else {
-            this.currentDate = convertToLocalDate(maxDate);
-            this.maxDate = convertToLocalDate(minDate);
+            this.currentDate = maxDate;
+            this.maxDate = minDate;
         }
         this.typeOfDay = typeOfDay;
-    }
-
-    /**
-     * Convert date to local date format
-     * @param date Date which will be converted
-     * @return Date in the local date format
-     */
-    private LocalDate convertToLocalDate(Date date) {
-        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     @Override
@@ -41,24 +38,23 @@ public class DateGenerator extends BaseGenerator<LocalDate> {
     }
 
     @Override
-    public LocalDate getNext() throws NoSuchElementException {
-        if (hasNext()) {
+    public LocalDate getNext() {
+        LocalDate result;
 
-            // Return current date and increment its value
-            if (typeOfDay == TypeOfDay.ALL) {
-                LocalDate result = currentDate;
-                currentDate = currentDate.plusDays(1);
-                return result;
-            }
-
-            // Get date with a correct type of day
-            while (hasNext()) {
-                currentDate = currentDate.plusDays(1);
-                if (TypeOfDay.getTypeOfDay(currentDate) == typeOfDay)
-                    return currentDate;
-            }
+        if (hasNext() && typeOfDay == TypeOfDay.ALL) {
+            result = currentDate;
+            currentDate = currentDate.plusDays(1);
+            return result;
         }
-        throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
+
+        while (hasNext()) {
+            result = currentDate;
+            currentDate = currentDate.plusDays(1);
+            if (TypeOfDay.getTypeOfDay(result) == typeOfDay)
+                return result;
+        }
+
+        return null;
     }
 
     /**

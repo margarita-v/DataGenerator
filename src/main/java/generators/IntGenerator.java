@@ -1,7 +1,5 @@
 package generators;
 
-import java.util.NoSuchElementException;
-
 public class IntGenerator extends BaseGenerator<Integer> {
 
     /**
@@ -37,15 +35,15 @@ public class IntGenerator extends BaseGenerator<Integer> {
     }
 
     @Override
-    public Integer getNext() throws NoSuchElementException {
+    public Integer getNext() {
         if (hasNext()) {
             int result = currentValue;
             currentValue += step;
             return result;
         }
-        throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
+        return null;
     }
-    
+
     //region Setters
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;

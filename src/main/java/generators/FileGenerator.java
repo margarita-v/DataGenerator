@@ -2,7 +2,6 @@ package generators;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class FileGenerator extends BaseGenerator<String> {
@@ -23,9 +22,9 @@ public class FileGenerator extends BaseGenerator<String> {
     }
 
     @Override
-    public String getNext() throws NoSuchElementException {
+    public String getNext() {
         if (hasNext())
             return scanner.next();
-        throw new NoSuchElementException(NO_SUCH_ELEMENT_EXCEPTION);
+        return null;
     }
 }

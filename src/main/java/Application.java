@@ -2,7 +2,8 @@ import generators.DateGenerator;
 import generators.FileGenerator;
 
 import java.io.File;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class Application {
 
@@ -12,17 +13,12 @@ public class Application {
     private static final String FILE_NAME = System.getProperty("user.dir") + "/sample.txt";
 
     public static void main(String[] args) {
-        FileGenerator fileGenerator = new FileGenerator(new File(FILE_NAME));
-        while (fileGenerator.hasNext())
-            System.out.println(fileGenerator.getNext());
+        new FileGenerator(new File(FILE_NAME)).printAll();
 
-        System.out.println();
-
-        DateGenerator dateGenerator = new DateGenerator(
-                new Date(117, 11, 12),
-                new Date(117, 11, 23),
-                DateGenerator.TypeOfDay.WORKING);
-        while (dateGenerator.hasNext())
-            System.out.println(dateGenerator.getNext().toString());
+        new DateGenerator(
+                LocalDate.of(2017, Month.NOVEMBER, 12),
+                LocalDate.of(2017, Month.NOVEMBER, 23),
+                DateGenerator.TypeOfDay.FREE)
+                .printAll();
     }
 }

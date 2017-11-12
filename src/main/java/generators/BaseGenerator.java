@@ -1,15 +1,16 @@
 package generators;
 
-import java.util.NoSuchElementException;
-
 public abstract class BaseGenerator<T> {
 
     public abstract boolean hasNext();
 
-    public abstract T getNext() throws NoSuchElementException;
+    public abstract T getNext();
 
-    /**
-     * String value for exception's message
-     */
-    static String NO_SUCH_ELEMENT_EXCEPTION = "All values were generated!";
+    public void printAll() {
+        T item;
+        while ((item = getNext()) != null) {
+            System.out.println(item.toString());
+        }
+        System.out.println();
+    }
 }
