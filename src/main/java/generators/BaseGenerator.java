@@ -1,5 +1,9 @@
 package generators;
 
+/**
+ * Base class for all generators
+ * @param <T> Type of value which will be generated
+ */
 public abstract class BaseGenerator<T> {
 
     /**

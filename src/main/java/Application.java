@@ -1,7 +1,4 @@
-import generators.DateGenerator;
-import generators.DoubleGenerator;
-import generators.FileGenerator;
-import generators.IntGenerator;
+import generators.*;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -40,6 +37,9 @@ public class Application {
 
         threadList.add(new Thread(() ->
                 new DoubleGenerator(1, 3, 0.5).printAll()));
+
+        threadList.add(new Thread(() ->
+                new NumberGenerator(2, 4, 2, 5).printAll()));
 
         try {
             for (Thread thread : threadList) {

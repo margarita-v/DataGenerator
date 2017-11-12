@@ -3,6 +3,9 @@ package generators;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+/**
+ * Generator for dates in a concrete range with a concrete types of day
+ */
 public class DateGenerator extends BaseGenerator<LocalDate> {
 
     /**
@@ -53,7 +56,6 @@ public class DateGenerator extends BaseGenerator<LocalDate> {
             if (TypeOfDay.getTypeOfDay(result) == typeOfDay)
                 return result;
         }
-
         return null;
     }
 

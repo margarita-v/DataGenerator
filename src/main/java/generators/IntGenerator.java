@@ -1,5 +1,8 @@
 package generators;
 
+/**
+ * Generator for int values in a concrete range
+ */
 public class IntGenerator extends BaseGenerator<Integer> {
 
     /**

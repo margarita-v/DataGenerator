@@ -1,5 +1,8 @@
 package generators;
 
+/**
+ * Generator for double values in a concrete range
+ */
 public class DoubleGenerator extends BaseGenerator<Double> {
 
     /**
