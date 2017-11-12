@@ -46,7 +46,7 @@ public class DoubleGenerator extends BaseGenerator<Double> {
     }
 
     @Override
-    public Double getNext() {
+    protected Double getNextImplementation() {
         if (hasNext()) {
             double result = currentValue;
             currentValue += step;

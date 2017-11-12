@@ -38,7 +38,7 @@ public class DateGenerator extends BaseGenerator<LocalDate> {
     }
 
     @Override
-    public LocalDate getNext() {
+    protected LocalDate getNextImplementation() {
         LocalDate result;
 
         if (hasNext() && typeOfDay == TypeOfDay.ALL) {

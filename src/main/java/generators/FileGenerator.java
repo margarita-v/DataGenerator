@@ -22,7 +22,7 @@ public class FileGenerator extends BaseGenerator<String> {
     }
 
     @Override
-    public String getNext() {
+    protected String getNextImplementation() {
         if (hasNext())
             return scanner.next();
         return null;

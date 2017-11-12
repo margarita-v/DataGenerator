@@ -40,7 +40,7 @@ public class IntGenerator extends BaseGenerator<Integer> {
     }
 
     @Override
-    public Integer getNext() {
+    protected Integer getNextImplementation() {
         if (hasNext()) {
             int result = currentValue;
             currentValue += step;
